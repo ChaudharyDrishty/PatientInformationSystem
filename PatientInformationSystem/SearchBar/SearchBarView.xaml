@@ -6,7 +6,67 @@
              xmlns:local="clr-namespace:PatientInformationSystem.SearchBar"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+    <Grid
+                Background="#E5E8E8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Search by:"
+                       Foreground="#2E4053"
+                       FontSize="14"
+                       FontWeight="SemiBold"
+                       VerticalAlignment="Center"
+                       Margin="0,0,10,0"/>
+
+            <ComboBox Grid.Column="1"
+                    Width="150"
+                    Height="32"
+                    VerticalContentAlignment="Center"
+                    SelectedIndex="0">
+                <ComboBoxItem Content="Name"/>
+                <ComboBoxItem Content="DOB"/>
+                <ComboBoxItem Content="Status"/>
+            </ComboBox>
+
+            <TextBox Grid.Column="2"
+                    Name="SearchBox"
+                    Height="32"
+                    Margin="15,0"
+                     VerticalContentAlignment="Center"
+                    Padding="8,0"
+                     GotFocus="SearchBox_GotFocus"
+                    LostFocus="SearchBox_LostFocus"
+                     Text="Search patients..."
+                    Foreground="Gray"/>
+
+            <Button Grid.Column="3"
+                    Content="+ Add Patient"
+                    Background="#0E8676"
+                    Foreground="White"
+                    FontWeight="SemiBold"
+                    FontSize="14"
+                    Width="130"
+                    Height="34"
+                    BorderThickness="0">
+                <Button.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}"
+                                            CornerRadius="4">
+                                        <ContentPresenter HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
 </UserControl>

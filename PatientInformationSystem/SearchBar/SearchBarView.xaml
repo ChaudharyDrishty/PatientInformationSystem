@@ -44,6 +44,7 @@
                     Foreground="Gray"/>
 
             <Button Grid.Column="3"
+                    Name="AddPatientButton"
                     Content="+ Add Patient"
                     Background="#0E8676"
                     Foreground="White"
@@ -51,7 +52,8 @@
                     FontSize="14"
                     Width="130"
                     Height="34"
-                    BorderThickness="0">
+                    BorderThickness="0"
+                    Click="AddPatientButton_Click">
                 <Button.Resources>
                     <Style TargetType="Button">
                         <Setter Property="Template">

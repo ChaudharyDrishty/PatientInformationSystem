@@ -15,11 +15,15 @@ namespace PatientInformationSystem
         public MainWindow()
         {
             InitializeComponent();
-            
+            Patients = new ObservableCollection<Patient>();
         }
 
-        
-
-        
+        public void AddPatientToList(Patient patient)
+        {
+            if (patient != null)
+            {
+                Patients.Add(patient);
+            }
+        }
     }
 }

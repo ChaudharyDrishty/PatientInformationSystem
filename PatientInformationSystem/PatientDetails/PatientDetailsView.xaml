@@ -37,51 +37,32 @@
                 </Style>
             </DataGrid.ColumnHeaderStyle>
 
-            <DataGrid.CellStyle>
-                <Style TargetType="DataGridCell">
-                    <!-- <Setter Property="Padding" Value="10,0"/> -->
-                    <Setter Property="VerticalAlignment"
-                            Value="Center"/>
-                    <Setter Property="BorderThickness"
-                            Value="0"/>
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="DataGridCell">
-                                <Border Padding="{TemplateBinding Padding}"
-                                        Background="{TemplateBinding Background}">
-                                    <ContentPresenter VerticalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </DataGrid.CellStyle>
-
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name"
                         Binding="{Binding Name}"
-                        Width="1.5*"/>
+                        Width="Auto"/>
                 <DataGridTextColumn Header="DOB"
                         Binding="{Binding DOB, StringFormat=dd/MM/yyyy}"
-                        Width="1*"/>
+                        Width="Auto"/>
                 <DataGridTextColumn Header="Email"
                         Binding="{Binding Email}"
-                        Width="1.8*"/>
+                        Width="Auto"/>
                 <DataGridTextColumn Header="Phone No."
                         Binding="{Binding PhoneNo}"
-                        Width="1.2*"/>
+                        Width="Auto"/>
                 <DataGridTextColumn Header="Address"
                         Binding="{Binding Address}"
-                        Width="2*"/>
+                        Width="*"
+                        MinWidth="200"/>
                 <DataGridTextColumn Header="Diagnosis"
                         Binding="{Binding Diagnosis}"
-                        Width="1.5*"/>
+                        Width="Auto"/>
                 <DataGridTextColumn Header="Surgery Status"
                         Binding="{Binding SurgeryStatus}"
-                        Width="1.2*"/>
+                        Width="Auto"/>
                 <DataGridTextColumn Header="Consultant Physician/Surgeon"
                         Binding="{Binding Consultant}"
-                        Width="2*"/>
+                        Width="Auto"/>
 
                 <DataGridTemplateColumn Header="Actions"
                         Width="Auto">
@@ -91,13 +72,13 @@
                                     Margin="10,0">
                                 <Button Content="Edit"
                                         Padding="8,3"
-                                        Margin="0,0,5,0"
+                                        Margin="5,2"
                                         Background="#2980B9"
                                         Foreground="White"
                                         BorderThickness="0"/>
                                 <Button Content="Delete"
                                         Padding="8,3"
-                                        Margin="5,0,0,0"
+                                        Margin="5,2"
                                         Background="#C0392B"
                                         Foreground="White"
                                         BorderThickness="0"/>

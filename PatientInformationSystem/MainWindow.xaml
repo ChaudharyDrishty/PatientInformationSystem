@@ -214,8 +214,8 @@
         mc:Ignorable="d"
         Title="Patient Details"
         Height="450"
-        Width="800">
-    <Grid>
+        Width="1500">
+    <Grid Background="#E5E8E8">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition Height="60"/>
@@ -226,7 +226,7 @@
 
         <search:SearchBarView Grid.Row="1"/>
 
-        <patientdetails:PatientDetailsView Grid.Row="2"/>
+        <patientdetails:PatientDetailsView Grid.Row="2" Margin="10,0,10,0"/>
 
     </Grid>
 </Window> -->

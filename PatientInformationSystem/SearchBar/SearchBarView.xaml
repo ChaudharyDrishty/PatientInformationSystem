@@ -1,74 +1,76 @@
 ﻿<UserControl x:Class="PatientInformationSystem.SearchBar.SearchBarView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:PatientInformationSystem.SearchBar"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+        d:DesignWidth="800">
     <Grid
-                Background="#E5E8E8">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
+        Background="#E5E8E8">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
 
-            <TextBlock Text="Search by:"
-                       Foreground="#2E4053"
-                       FontSize="14"
-                       FontWeight="SemiBold"
-                       VerticalAlignment="Center"
-                       Margin="0,0,10,0"/>
+        <TextBlock Text="Search by:"
+                   Foreground="#2E4053"
+                   FontSize="14"
+                   FontWeight="SemiBold"
+                   VerticalAlignment="Center"
+                   Margin="10,0,10,0"/>
 
-            <ComboBox Grid.Column="1"
-                    Width="150"
-                    Height="32"
-                    VerticalContentAlignment="Center"
-                    SelectedIndex="0">
-                <ComboBoxItem Content="Name"/>
-                <ComboBoxItem Content="DOB"/>
-                <ComboBoxItem Content="Status"/>
-            </ComboBox>
+        <ComboBox Grid.Column="1"
+                  Width="150"
+                  Height="32"
+                  VerticalContentAlignment="Center"
+                  SelectedIndex="0">
+            <ComboBoxItem Content="Name"/>
+            <ComboBoxItem Content="DOB"/>
+            <ComboBoxItem Content="Status"/>
+        </ComboBox>
 
-            <TextBox Grid.Column="2"
-                    Name="SearchBox"
-                    Height="32"
-                    Margin="15,0"
-                     VerticalContentAlignment="Center"
-                    Padding="8,0"
-                     GotFocus="SearchBox_GotFocus"
-                    LostFocus="SearchBox_LostFocus"
-                     Text="Search patients..."
-                    Foreground="Gray"/>
+        <TextBox Grid.Column="2"
+                 Name="SearchBox"
+                 Height="32"
+                 Margin="15,0"
+                 VerticalContentAlignment="Center"
+                 Padding="8,0"
+                 GotFocus="SearchBox_GotFocus"
+                 LostFocus="SearchBox_LostFocus"
+                 Text="Search patients..."
+                 Foreground="Gray"/>
 
-            <Button Grid.Column="3"
-                    Name="AddPatientButton"
-                    Content="+ Add Patient"
-                    Background="#0E8676"
-                    Foreground="White"
-                    FontWeight="SemiBold"
-                    FontSize="14"
-                    Width="130"
-                    Height="34"
-                    BorderThickness="0"
-                    Click="AddPatientButton_Click">
-                <Button.Resources>
-                    <Style TargetType="Button">
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="Button">
-                                    <Border Background="{TemplateBinding Background}"
-                                            CornerRadius="4">
-                                        <ContentPresenter HorizontalAlignment="Center"
-                                                VerticalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </Button.Resources>
-            </Button>
-        </Grid>
+        <Button Grid.Column="3"
+                Name="AddPatientButton"
+                Content="+ Add Patient"
+                Background="#0E8676"
+                Foreground="White"
+                FontWeight="SemiBold"
+                FontSize="14"
+                Width="130"
+                Height="34"
+                BorderThickness="0"
+                Margin="0,0,10,0"
+                Click="AddPatientButton_Click">
+            <Button.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}"
+                                        CornerRadius="4">
+                                    <ContentPresenter HorizontalAlignment="Center"
+                                                      VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Resources>
+        </Button>
+    </Grid>
 </UserControl>

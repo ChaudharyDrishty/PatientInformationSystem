@@ -3,6 +3,210 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:header="clr-namespace:PatientInformationSystem.Header"
+        xmlns:search="clr-namespace:PatientInformationSystem.SearchBar"
+        mc:Ignorable="d"
+        Title="Patient Information System"
+        Height="600"
+        Width="950"
+
+        
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen"
+        MinWidth="950"
+        MinHeight="600">
+
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <header:HeaderView Grid.Row="0"/>
+
+        <!-- Search bar -->
+        <search:SearchBarView Grid.Row="1" x:Name="SearchBarControl"/>
+
+        <!-- DataGrid -->
+        <DataGrid Grid.Row="2"
+                  Margin="0,10,0,0"
+                  ItemsSource="{Binding Patients}"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  CanUserAddRows="False"
+                  CanUserResizeColumns="True"
+                  CanUserReorderColumns="False"
+                  HeadersVisibility="Column"
+                  GridLinesVisibility="All"
+                  AlternationCount="2"
+
+                  
+                  ColumnWidth="*"
+
+                  
+                  HorizontalScrollBarVisibility="Disabled"
+                  VerticalScrollBarVisibility="Auto"
+
+                  RowHeight="40"
+                  ColumnHeaderHeight="42"
+                  FontSize="14">
+
+            <DataGrid.Resources>
+
+                <!-- Header style (Dark Blue) -->
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#0B2D5B"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                    <Setter Property="Padding" Value="8,6"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="BorderBrush" Value="#09305A"/>
+                    <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                </Style>
+
+                <!-- Cell padding (slightly smaller so all columns fit better) -->
+                <Style TargetType="DataGridCell">
+                    <Setter Property="Padding" Value="8,6"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                </Style>
+
+                <!-- Alternating row + selection styling -->
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+
+                    <Style.Triggers>
+                        <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                            <Setter Property="Background" Value="#F4F7FB"/>
+                        </Trigger>
+
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#1E5AA8"/>
+                            <Setter Property="Foreground" Value="White"/>
+                        </Trigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="True"/>
+                                <Condition Property="Selector.IsSelectionActive" Value="False"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" Value="#1E5AA8"/>
+                            <Setter Property="Foreground" Value="White"/>
+                        </MultiTrigger>
+                    </Style.Triggers>
+                </Style>
+
+                <!-- Text trimming for long text so it doesn't expand columns -->
+                <Style x:Key="TrimTextBlock" TargetType="TextBlock">
+                    <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+                    <Setter Property="TextWrapping" Value="NoWrap"/>
+                </Style>
+
+            </DataGrid.Resources>
+
+            <!-- ✅ IMPORTANT: Use star sizing ratios so everything stays visible -->
+            <DataGrid.Columns>
+
+                <DataGridTemplateColumn Header="Name" Width="1.0*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" Style="{StaticResource TrimTextBlock}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header="DOB"
+                                    Binding="{Binding DOB, StringFormat={}{0:dd-MM-yyyy}}"
+                                    Width="0.9*"/>
+
+                <DataGridTemplateColumn Header="Gender" Width="1.1*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Gender}" Style="{StaticResource TrimTextBlock}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header="Phone"
+                                    Binding="{Binding PhoneNo}"
+                                    Width="1.0*"/>
+
+                <DataGridTemplateColumn Header="Email" Width="1.3*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Email}" Style="{StaticResource TrimTextBlock}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Address" Width="1.3*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Address}" Style="{StaticResource TrimTextBlock}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Diagnosis" Width="1.4*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Diagnosis}" Style="{StaticResource TrimTextBlock}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Surgery" Width="1.0*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding SurgeryStatus}" Style="{StaticResource TrimTextBlock}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Consultant" Width="1.1*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Consultant}" Style="{StaticResource TrimTextBlock}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <!-- Action column (display only) -->
+                <DataGridTemplateColumn Header="Action" Width="1.0*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center">
+                                <TextBlock Text="Edit" Foreground="DodgerBlue" FontWeight="SemiBold"/>
+                                <TextBlock Text="  |  " Foreground="Gray"/>
+                                <TextBlock Text="Delete" Foreground="Red" FontWeight="SemiBold"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>
+
+
+
+
+
+
+
+
+<!-- <Window x:Class="PatientInformationSystem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PatientInformationSystem"
         xmlns:header="clr-namespace:PatientInformationSystem.Header"
         xmlns:search="clr-namespace:PatientInformationSystem.SearchBar"
@@ -25,4 +229,4 @@
         <patientdetails:PatientDetailsView Grid.Row="2"/>
 
     </Grid>
-</Window>
+</Window> -->
